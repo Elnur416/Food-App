@@ -19,11 +19,21 @@ class ProductsListViewModel {
             self.order = data
         }
     }
-    func addItem(sender: UIButton, selectedMenu: MenuModel) -> Product {
-        let index = sender.tag
-        let selectedItem = selectedMenu.products?[index]
-        order.append(selectedItem!)
-        adapter.writeData(order: order)
-        return selectedItem!
+    func addItem(sender: UIButton, selectedMenu: MenuModel) -> Product? {
+            let index = sender.tag
+            guard let products = selectedMenu.products,
+                  index >= 0,
+                  index < products.count else {
+                return nil
+            }
+        let selectedItem = products[index]
+            if let existingIndex = order.firstIndex(where: { $0.id == selectedItem.id }) {
+                order[existingIndex].quantity! += 1
+            } else {
+                order.append(selectedItem)
+            }
+            adapter.writeData(order: order)
+        return selectedItem
+        }
     }
-}
+

@@ -23,9 +23,5 @@ class ProfileViewModel {
         fullnameLabel.text = user[index].fullname
         emailLabel.text = user[index].email
         phoneLabel.text = user[index].phone
-        
-//        fullnameLabel.text = user[user.count - 1].fullname
-//        emailLabel.text = user[user.count - 1].email
-//        phoneLabel.text = user[user.count - 1].phone
     }
 }

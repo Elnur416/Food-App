@@ -12,7 +12,7 @@ class FileAdapter {
     func getFilePath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let path = files[0].appendingPathComponent("Order.json")
-//        print(path)
+//      print(path)
         return path
     }
     func readData(completion: (([Product]) -> Void)?) {

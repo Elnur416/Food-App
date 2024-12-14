@@ -18,7 +18,16 @@ class OrderController: UIViewController {
         title = "Basket"
         configureTableCell()
         orderViewModel.readData(totalPrice: totalPrice)
-       
+        configureViewModel()
+    }
+    
+    func configureViewModel() {
+        orderViewModel.error = {
+            let alert = UIAlertController(title: "Error", message: "No added items!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
     }
     
     func configureTableCell() {
@@ -27,6 +36,7 @@ class OrderController: UIViewController {
         tableView.register(UINib(nibName: "TableCell", bundle: nil), forCellReuseIdentifier: "TableCell")
     }
     @IBAction func confirmButtonAction(_ sender: Any) {
+        orderViewModel.confirmButtonAction()
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(SuccessController.self)") as! SuccessController
         navigationController?.present(controller, animated: true)
         orderViewModel.getOrder(totalPrice: totalPrice, tableView: tableView)

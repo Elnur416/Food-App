@@ -35,7 +35,7 @@ class ProductsListController: UIViewController {
     }
     @objc func addItem(_ sender: UIButton) {
         let selectedItem = productsListViewModel.addItem(sender: sender, selectedMenu: selectedMenu!)
-        let alert = UIAlertController(title: "Added", message: "\(selectedItem.name ?? "") added to order", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Added", message: "\(selectedItem?.name ?? "") added to order", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
         present(alert, animated: true)

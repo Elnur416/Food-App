@@ -11,6 +11,7 @@ import UIKit
 class OrderViewModel {
     var orderList = [Product]()
     private let adapter = FileAdapter()
+    var error: (() -> Void)?
     
     func readData(totalPrice: UILabel) {
         adapter.readData { data in
@@ -33,5 +34,10 @@ class OrderViewModel {
         let formattedPrice = self.updateTotalPrice()
         totalPrice.text = "\(formattedPrice)"
         tableView.reloadData()
+    }
+    func confirmButtonAction() {
+        if orderList.isEmpty {
+            error?()
+        } 
     }
 }
