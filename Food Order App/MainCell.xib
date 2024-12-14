@@ -20,6 +20,10 @@
                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dc3-jL-IHu">
                         <rect key="frame" x="0.0" y="0.0" width="309" height="278"/>
                     </imageView>
+                    <view alpha="0.25" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="lvy-yC-ivH">
+                        <rect key="frame" x="0.0" y="0.0" width="309" height="278"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iH4-dW-Gvo">
                         <rect key="frame" x="20" y="244" width="269" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
@@ -30,7 +34,7 @@
                         <rect key="frame" x="259" y="0.0" width="50" height="35"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" image="plus.circle" catalog="system">
-                            <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="baseForegroundColor" systemColor="systemRedColor"/>
                         </buttonConfiguration>
                         <connections>
                             <action selector="addButtonAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="p7n-Oq-3sO"/>
@@ -40,18 +44,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
                         <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" systemColor="systemRedColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="lvy-yC-ivH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0lN-qv-e4v"/>
                 <constraint firstItem="dc3-jL-IHu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7V8-K9-jbc"/>
                 <constraint firstItem="QFg-w2-bQ7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Bjd-rz-ngu"/>
                 <constraint firstAttribute="bottom" secondItem="dc3-jL-IHu" secondAttribute="bottom" id="Ccj-So-MfE"/>
                 <constraint firstAttribute="trailing" secondItem="iH4-dW-Gvo" secondAttribute="trailing" constant="20" id="EGO-KS-6G9"/>
                 <constraint firstAttribute="trailing" secondItem="ctR-qH-7cb" secondAttribute="trailing" id="M5x-JZ-1Lv"/>
+                <constraint firstAttribute="bottom" secondItem="lvy-yC-ivH" secondAttribute="bottom" id="UVY-YY-EFW"/>
                 <constraint firstAttribute="trailing" secondItem="dc3-jL-IHu" secondAttribute="trailing" id="bdT-ZY-qUC"/>
                 <constraint firstItem="dc3-jL-IHu" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="feD-sd-vSO"/>
                 <constraint firstItem="QFg-w2-bQ7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g6B-nC-iLq"/>
@@ -59,7 +65,9 @@
                 <constraint firstItem="ctR-qH-7cb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kFx-g2-N53"/>
                 <constraint firstAttribute="bottom" secondItem="iH4-dW-Gvo" secondAttribute="bottom" constant="10" id="kSA-3A-uZ7"/>
                 <constraint firstItem="dc3-jL-IHu" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tQx-0U-L2r"/>
+                <constraint firstItem="lvy-yC-ivH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="vDV-We-cjI"/>
                 <constraint firstItem="iH4-dW-Gvo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="xSQ-3v-1CA"/>
+                <constraint firstAttribute="trailing" secondItem="lvy-yC-ivH" secondAttribute="trailing" id="zLo-uW-17W"/>
             </constraints>
             <size key="customSize" width="309" height="278"/>
             <connections>
@@ -78,6 +86,9 @@
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

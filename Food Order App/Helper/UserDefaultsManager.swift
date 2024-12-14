@@ -11,6 +11,7 @@ import Foundation
 class UserDefaultsManager {
     enum UserDefaultsTypes: String {
         case isLoggedIn = "loggedIn"
+        case getUserIndex = ""
     }
     
     func setValue(value: Any, key: UserDefaultsTypes) {
@@ -18,5 +19,8 @@ class UserDefaultsManager {
     }
     func getBool(key: UserDefaultsTypes) -> Bool {
         UserDefaults.standard.bool(forKey: key.rawValue)
+    }
+    func getIndex(key: UserDefaultsTypes) -> Int {
+        UserDefaults.standard.integer(forKey: key.rawValue)
     }
 }

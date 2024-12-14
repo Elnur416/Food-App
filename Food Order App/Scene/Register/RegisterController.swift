@@ -24,6 +24,16 @@ class RegisterController: UIViewController {
         title = "Registration"
         registerViewModel.readData()
         configureAnimationView()
+        configureViewModel()
+    }
+    
+    func configureViewModel() {
+        registerViewModel.error = {
+            let alert = UIAlertController(title: "Error", message: "Account already exists!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     func configureAnimationView() {

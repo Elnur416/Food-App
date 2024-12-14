@@ -10,6 +10,9 @@ import Foundation
 class RegisterViewModel {
     private var users = [User]()
     private let fileManager = FileManagerHelper()
+    private let manager = UserDefaultsManager()
+    
+    var error: (() -> Void)?
     
     func readData() {
         fileManager.readData { usersData in
@@ -18,7 +21,11 @@ class RegisterViewModel {
     }
     
     func register(user: User) {
-        users.append(user)
-        fileManager.writeData(user: users)
+        if users.contains(where: { $0.fullname == user.fullname && $0.email == user.email && $0.password == user.password && $0.phone == user.phone}) {
+            error?()
+        } else {
+            users.append(user)
+            fileManager.writeData(user: users)
+        }
     }
 }

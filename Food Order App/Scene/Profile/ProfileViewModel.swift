@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewModel {
     var user = [User]()
     let fileManager = FileManagerHelper()
+    let manager = UserDefaultsManager()
     
     func readData() {
         fileManager.readData { userData in
@@ -18,8 +19,13 @@ class ProfileViewModel {
         }
     }
     func getUserInfo(fullnameLabel: UILabel, emailLabel: UILabel, phoneLabel: UILabel) {
-        fullnameLabel.text = user[user.count - 1].fullname
-        emailLabel.text = user[user.count - 1].email
-        phoneLabel.text = user[user.count - 1].phone
+        let index = manager.getIndex(key: .getUserIndex)
+        fullnameLabel.text = user[index].fullname
+        emailLabel.text = user[index].email
+        phoneLabel.text = user[index].phone
+        
+//        fullnameLabel.text = user[user.count - 1].fullname
+//        emailLabel.text = user[user.count - 1].email
+//        phoneLabel.text = user[user.count - 1].phone
     }
 }

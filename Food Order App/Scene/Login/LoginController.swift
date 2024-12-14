@@ -46,6 +46,7 @@ class LoginController: UIViewController {
         if let email = emailTextField.text, !email.isEmpty,
            let password = passwordTextField.text, !password.isEmpty {
             loginViewModel.loginAction(email: email, password: password)
+            loginViewModel.getUserIndex(email: email, password: password)
         }
     }
     

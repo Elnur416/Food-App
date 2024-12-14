@@ -12,7 +12,7 @@ class FileManagerHelper {
     func getFilePath() -> URL {
         let files = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let path = files[0].appendingPathComponent("Users")
-//        print(path)
+        print(path)
         return path
     }
     func readData(completion: (([User]) -> Void)?) {

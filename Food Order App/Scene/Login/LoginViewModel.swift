@@ -31,4 +31,8 @@ class LoginViewModel {
             error?()
         }
     }
+    func getUserIndex(email: String, password: String) {
+        guard let index = users.firstIndex(where: { $0.email == email && $0.password == password }) else { return }
+        manager.setValue(value: index, key: .getUserIndex)
+    }
 }
