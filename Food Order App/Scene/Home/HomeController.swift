@@ -10,8 +10,6 @@ import UIKit
 class HomeController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     
-    let productsListViewModel = ProductsListViewModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Menu"
