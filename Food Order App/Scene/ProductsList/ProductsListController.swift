@@ -9,12 +9,14 @@ import UIKit
 
 class ProductsListController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
-    var selectedMenu: MenuModel?
-    let productsListViewModel = ProductsListViewModel()
+    
+    
+    var productsListViewModel = ProductsListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = productsListViewModel.selectedMenu?.name
         configureLayout()
         configureCollectionView()
         productsListViewModel.readData()
@@ -28,13 +30,16 @@ class ProductsListController: UIViewController {
         layout.minimumInteritemSpacing = 20
         collection.collectionViewLayout = layout
     }
+    
     func configureCollectionView() {
         collection.dataSource = self
         collection.delegate = self
         collection.register(UINib(nibName: "MainCell", bundle: nil), forCellWithReuseIdentifier: "MainCell")
     }
+    
     @objc func addItem(_ sender: UIButton) {
-        let selectedItem = productsListViewModel.addItem(sender: sender, selectedMenu: selectedMenu!)
+        let selectedItem = productsListViewModel.addItem(sender: sender,
+                                                         selectedMenu: productsListViewModel.selectedMenu!)
         let alert = UIAlertController(title: "Added", message: "\(selectedItem?.name ?? "") added to order", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
         alert.addAction(okAction)
@@ -44,11 +49,13 @@ class ProductsListController: UIViewController {
 
 extension ProductsListController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        selectedMenu?.products?.count ?? 0
+        productsListViewModel.selectedMenu?.products?.count ?? 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCell", for: indexPath) as! MainCell
-        cell.configure(text: selectedMenu?.products?[indexPath.row].name ?? "", image: selectedMenu?.products?[indexPath.row].image ?? "", price: selectedMenu?.products?[indexPath.row].price ?? 0)
+        cell.configure(text: productsListViewModel.selectedMenu?.products?[indexPath.row].name ?? "",
+                       image: productsListViewModel.selectedMenu?.products?[indexPath.row].image ?? "",
+                       price: productsListViewModel.selectedMenu?.products?[indexPath.row].price ?? 0)
         cell.itemPrice.isHidden = false
         cell.button.isHidden = false
         cell.button.tag = indexPath.row

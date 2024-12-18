@@ -59,8 +59,8 @@ extension HomeController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "\(ProductsListController.self)") as! ProductsListController
-        controller.selectedMenu = menu[indexPath.row]
-        controller.title = menu[indexPath.row].name
+        controller.productsListViewModel.selectedMenu = menu[indexPath.row]
+//        controller.title = menu[indexPath.row].name
         navigationController?.show(controller, sender: nil)
     }
 }

@@ -14,6 +14,8 @@ class ProductsListViewModel {
     private var order = [Product]()
     private let adapter = FileAdapter()
     
+    var selectedMenu: MenuModel?
+    
     func readData() {
         adapter.readData { data in
             self.order = data
