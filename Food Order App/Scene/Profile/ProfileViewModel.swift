@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 class ProfileViewModel {
-    var user = [User]()
-    let fileManager = FileManagerHelper()
-    let manager = UserDefaultsManager()
+    private var user = [User]()
+    private let fileManager = FileManagerHelper()
+    private let manager = UserDefaultsManager()
     
     func readData() {
         fileManager.readData { userData in

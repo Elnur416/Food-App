@@ -9,26 +9,26 @@ import UIKit
 import Lottie
 
 class RegisterController: UIViewController {
-    @IBOutlet weak var fullnameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var animationView: LottieAnimationView!
+    @IBOutlet private weak var fullnameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var phoneNumberTextField: UITextField!
+    @IBOutlet private weak var animationView: LottieAnimationView!
     
     var callBack: ((String, String) -> Void)?
     
-    let registerViewModel = RegisterViewModel()
+    let viewModel = RegisterViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Registration"
-        registerViewModel.readData()
+        viewModel.readData()
         configureAnimationView()
         configureViewModel()
     }
     
     func configureViewModel() {
-        registerViewModel.error = {
+        viewModel.error = {
             let alert = UIAlertController(title: "Error", message: "Account already exists!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default)
             alert.addAction(okAction)
@@ -55,7 +55,7 @@ class RegisterController: UIViewController {
             return
         }
         let user: User = .init(fullname: fullname, email: email, password: password, phone: phoneNumber)
-        registerViewModel.register(user: user)
+        viewModel.register(user: user)
         callBack?(email, password)
         navigationController?.popViewController(animated: true)
     }

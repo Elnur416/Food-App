@@ -9,32 +9,33 @@ import UIKit
 import Lottie
 
 class LoginController: UIViewController {
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var animationView: LottieAnimationView!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    @IBOutlet private weak var animationView: LottieAnimationView!
     
-    let loginViewModel = LoginViewModel()
+    let viewModel = LoginViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Login"
+        
         configureAnimationView()
         configureViewModel()
     }
     
     func configureAnimationView() {
+        title = "Login"
         animationView.play()
         animationView.loopMode = .loop
         animationView.animationSpeed = 0.5
     }
     
     func configureViewModel() {
-        loginViewModel.success = {
+        viewModel.success = {
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
             let sceneDelegate = windowScene.delegate as! SceneDelegate
             sceneDelegate.homeRoot()
         }
-        loginViewModel.error = {
+        viewModel.error = {
             let alert = UIAlertController(title: "Error", message: "Wrong Email or password!", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default)
             alert.addAction(okAction)
@@ -45,8 +46,8 @@ class LoginController: UIViewController {
     @IBAction func loginButtonAction(_ sender: Any) {
         if let email = emailTextField.text, !email.isEmpty,
            let password = passwordTextField.text, !password.isEmpty {
-            loginViewModel.loginAction(email: email, password: password)
-            loginViewModel.getUserIndex(email: email, password: password)
+            viewModel.loginAction(email: email, password: password)
+            viewModel.getUserIndex(email: email, password: password)
         }
     }
     

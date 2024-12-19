@@ -10,7 +10,6 @@ import UIKit
 
 
 class ProductsListViewModel {
-    
     private var order = [Product]()
     private let adapter = FileAdapter()
     
@@ -21,6 +20,7 @@ class ProductsListViewModel {
             self.order = data
         }
     }
+    
     func addItem(sender: UIButton, selectedMenu: MenuModel) -> Product? {
             let index = sender.tag
             guard let products = selectedMenu.products,

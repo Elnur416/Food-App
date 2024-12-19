@@ -13,6 +13,4 @@ class SuccessController: UIViewController {
         super.viewDidLoad()
 
     }
-    
-  
 }

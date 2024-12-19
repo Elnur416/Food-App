@@ -8,11 +8,12 @@
 import UIKit
 
 class MainCell: UICollectionViewCell {
-    @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet private weak var titleImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var itemPrice: UILabel!
+    @IBOutlet private weak var itemPrice: UILabel!
     
+    let viewModel = ProductsListViewModel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,10 +21,14 @@ class MainCell: UICollectionViewCell {
         button.isHidden = true
         itemPrice.isHidden = true
     }
-    func configure(text: String, image: String, price: Double) {
+    
+    func configure(text: String, image: String, price: Double, itemPriceIsHidden: Bool, plusButtonIsHidden: Bool, indexPath: IndexPath) {
         titleLabel.text = text
         titleImage.image = UIImage(named: image)
         itemPrice.text = String(price)
+        itemPrice.isHidden = itemPriceIsHidden
+        button.isHidden = plusButtonIsHidden
+        button.tag = indexPath.row
     }
    
     @IBAction func addButtonAction(_ sender: Any) {

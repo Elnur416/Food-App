@@ -8,16 +8,16 @@
 import UIKit
 
 class ProfileController: UIViewController {
-    @IBOutlet weak var fullnameLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet private weak var fullnameLabel: UILabel!
+    @IBOutlet private weak var phoneLabel: UILabel!
+    @IBOutlet private weak var emailLabel: UILabel!
     
-    let profileViewModel = ProfileViewModel()
+    let viewModel = ProfileViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profileViewModel.readData()
-        profileViewModel.getUserInfo(fullnameLabel: fullnameLabel, emailLabel: emailLabel, phoneLabel: phoneLabel)
+        viewModel.readData()
+        viewModel.getUserInfo(fullnameLabel: fullnameLabel, emailLabel: emailLabel, phoneLabel: phoneLabel)
     }
 }
